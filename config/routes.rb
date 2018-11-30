@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :chats
   resources :machines
   resources :machine_messages
+  get '/machines/index_json' => 'machines#index_json'
+  post '/machineusers' => 'machines_users#add'
 
   root 'home#index'
 end

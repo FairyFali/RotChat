@@ -16,4 +16,13 @@ class MachinesController < ApplicationController
   					" order by created_at asc")
 
   end
+
+  # json请求
+  # /machines/index_json get
+  # 返回json数据的machines数据
+  def index_json
+  	machines = Machine.where("name like ?", "%#{params[:query]}%")
+  	current_machines = current_user.machines
+  	render json: (machines - current_machines).as_json
+  end
 end
