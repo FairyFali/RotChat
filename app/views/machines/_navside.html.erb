@@ -1,0 +1,12 @@
+<div>通讯录</div>
+
+<% @user_machines.each do |m| %>
+	<%= link_to machine_path(m), class: 'list-group-item' do %>
+        <% if @machine.id == m.id %>
+        	<span style="font-weight: bold;color:red;">-></span>
+        <% end %>
+        机器人客服：<%= m.name %><%= m.id %>
+    <% end %>
+<% end %>
+
+<div><button class="btn btn-success" >添加机器人</button></div>
