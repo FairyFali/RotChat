@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Api_key:</strong>
+  <%= @machine.api_key %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @machine.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @machine.url %>
+</p>
+
+<p>
+  <strong>评分:</strong>
+  <%= @machine.score/10.0 %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @machine.code %>
+</p>
+
+<p>
+  <strong>请求次数:</strong>
+  <%= @machine.req_num %>
+</p>
+
+<p>
+  <strong>平均响应时间:</strong>
+  <%= @machine.duration/1000.0 %> ms
+</p>
+
+<%= link_to 'Edit', '/admin/machines/'+@machine.id.to_s+'/edit' %> |
+<%= link_to 'Back', '/admin/machines' %>

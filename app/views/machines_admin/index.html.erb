@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Machines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Api_key</th>
+      <th>Name</th>
+      <th>url</th>
+      <th>用户评分</th>
+      <th>平均响应时间</th>
+      <th>请求次数</th>
+      <th>方法代码</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @machines.each do |machine| %>
+      <tr>
+        <td><%= machine.api_key %></td>
+        <td><%= machine.name %></td>
+        <td><%= machine.url %></td>
+        <td><%= machine.score %></td>
+        <td><%= machine.duration %></td>
+        <td><%= machine.req_num %></td>
+        <td><%= machine.code %></td>
+        <td><%= link_to 'Show', '/admin/machines/'+machine.id.to_s %></td>
+        <td><%= link_to 'Edit', '/admin/machines/'+machine.id.to_s+'/edit' %></td>
+        <td><%= link_to 'Destroy', '/admin/machines/'+machine.id.to_s, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Machine', '/admin/machines/new' %>
