@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_073425) do
+ActiveRecord::Schema.define(version: 2018_12_01_061259) do
 
   create_table "_machine_messages_old_20181130", force: :cascade do |t|
     t.integer "user_id"
@@ -57,6 +57,10 @@ ActiveRecord::Schema.define(version: 2018_11_30_073425) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "url"
+    t.integer "score"
+    t.integer "duration"
+    t.integer "code"
+    t.integer "req_num"
   end
 
   create_table "machines_users", force: :cascade do |t|

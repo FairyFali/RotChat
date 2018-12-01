@@ -20,7 +20,23 @@ class MachineMessagesController < ApplicationController
 						:type2=>1)
 		if machine_message2.save
 			# 创造machine返回的消息
-			msg = send_message_to_api(text, @machine.api_key, @machine.url, user_id)
+			start_time = Time.new
+			msg = ""
+			case @machine.code
+			when 1
+				msg = send_message_to_api1(text, @machine.api_key, @machine.url, user_id)
+			when 2
+			when 3
+			end
+			end_time = Time.new
+			# 计算时间
+			duration = (start_time - end_time)*1000000
+			# 新的请求次数
+			new_req_num = @machine.req_num + 1
+			# 新的请求时间
+			new_duration = (duration + @machine.duration*@machine.req_num)/new_req_num
+			# 更新请求时间和请求次数
+			@machine.update({:duration=>new_duration, :req_num=>new_req_num})
 			machine_message_api = MachineMessage.new(:user_id=>user_id,
 						:machine_id=>machine_id,
 						:text=>msg,
@@ -41,7 +57,7 @@ class MachineMessagesController < ApplicationController
 	end
 
 private
-	def send_message_to_api(msg, api_key, url_machine, user_id)
+	def send_message_to_api1(msg, api_key, url_machine, user_id)
 		data = {
 		    "reqType": 0,
 		    "perception": {

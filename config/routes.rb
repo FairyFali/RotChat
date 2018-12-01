@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   get 'welcome/index'
   
   resources :chats
-  resources :machines
+  resources :machines do
+    collection do
+      get :index_json
+    end
+  end
   resources :machine_messages
-  get '/machines/index_json' => 'machines#index_json'
   post '/machineusers' => 'machines_users#add'
 
   root 'home#index'

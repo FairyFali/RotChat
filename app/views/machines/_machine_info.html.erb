@@ -4,8 +4,8 @@
 <div>machine api:</div>
 <div><%= @machine.api_key %></div>
 <div>用户评分：</div>
-<div>9.5</div>
+<div><%= @machine.score/1.0 %></div>
 <div>平均响应时间：</div>
-<div>0.04 ms</div>
+<div><%= @machine.duration/1000 %> ms</div>
 <div>结束聊天？请您评价：</div>
-<div>五颗星</div>
+<div><input type="text" name="score" placeholder="请您打分，1~10分"></div>

@@ -38,6 +38,7 @@
 <script>
     $('#search-machine').submit(function () {
         var valuesToSubmit = $(this).serialize();
+        alert(valuesToSubmit);
         $.ajax({
             type: 'GET',
             url: '/machines/index_json',
