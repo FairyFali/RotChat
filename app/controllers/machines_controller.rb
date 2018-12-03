@@ -26,4 +26,20 @@ class MachinesController < ApplicationController
   	current_machines = current_user.machines
   	render json: (machines - current_machines).as_json
   end
+
+  # 打分功能
+  def score
+    machine = Machine.find(params[:id])
+    # 这里需要判断
+    user_score = params[:machine][:score].to_i * 10
+    current_score = machine.score
+    new_score = current_score + 6 if user_score > current_score
+    new_score = current_score - 6 if user_score < current_score
+    new_score = current_user if user_score == current_score
+    # 更新打分
+    machine.update(:score => new_score)
+    flash[:notice] = "评分成功"
+    redirect_to '/machines'
+  end
+
 end

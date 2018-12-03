@@ -1,6 +1,7 @@
 require 'net/http'
 require 'uri'
 require 'json'
+require 'addressable/uri'
 class MachineMessagesController < ApplicationController
 	before_action :authenticate_user!  # 這個是 devise 提供的方法，先檢查必須登入
 	
@@ -26,11 +27,13 @@ class MachineMessagesController < ApplicationController
 			when 1
 				msg = send_message_to_api1(text, @machine.api_key, @machine.url, user_id)
 			when 2
+				msg = send_message_to_api2(text, @machine.url)
 			when 3
+				msg = send_message_to_api3(text, @machine.url)
 			end
 			end_time = Time.new
 			# 计算时间
-			duration = (start_time - end_time)*1000000
+			duration = (end_time - start_time)*1000000
 			# 新的请求次数
 			new_req_num = @machine.req_num + 1
 			# 新的请求时间
@@ -84,4 +87,19 @@ private
 	  	p result
 		return result
 	end
+
+	def send_message_to_api2(msg, url)
+		url = Addressable::URI.parse(url + msg)
+		response = Net::HTTP.get_response(url)
+		# 此处编码问题解决了一下
+		return response.body.encode("ASCII-8BIT").force_encoding("utf-8")
+	end
+
+	def send_message_to_api3(msg, url)
+		ha = JSON.parse(send_message_to_api2(msg, url))
+		# 替换{br}为空格
+		text = ha["content"].gsub("{br}", "<br>")
+		return text
+	end
+
 end

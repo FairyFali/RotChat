@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       get :index_json
     end
   end
+  # 机器人评分
+  post 'machines/score', to: 'machines#score'
 
   # 机器人回复信息的URL
   resources :machine_messages
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
   patch '/admin/machines', to: 'machines_admin#update'
   delete '/admin/machines/:id(.:format)', to: 'machines_admin#destroy'
   get '/admin/machines/:id/edit(.:format)', to: 'machines_admin#edit'
+
 
   # 根目录
   root 'home#index'
