@@ -1,0 +1,103 @@
+<h1>UserProfiles#edit</h1>
+<% user = @user %>
+
+<%= form_for :img ,url: '/user_profiles/upload_img' do |f| %>
+	<% if !user.img_url.nil? %>
+    	<%=image_tag "upload/" + user.img_url, style: "width:80px" %>
+    <% end %>
+    <p>选择图片</p>
+    <%= f.file_field :image %>
+    <%= f.submit value="保存" %>
+<% end %>
+
+
+<%= form_with(model: user, local: true, url: '/user_profiles', multipart: false) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if !user.id.nil? %>
+    <input type="hidden" name="id" value="<%= user.id%>">
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nickname %>
+    <%= form.text_field :nickname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sex %>
+    <%= form.radio_button :sex, "男" %>男
+    <%= form.radio_button :sex, "女" %>女
+  </div>
+
+  <div class="field">
+    <%= form.label :birthdate %>
+    <%= form.date_field :birthdate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.telephone_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :university %>
+    <%= form.text_field :university %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :profession %>
+    <%= form.select(:profession) do %>
+	  <% [['工程师', 1], ['金融专家', 2], ['公务员', 3],['其他', 4]].each do |c| -%>
+	    <%= content_tag(:option, c.first, value: c.first) %>
+	  <% end %>
+	<% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :memo %>
+    <%= form.text_area :memo, cols: 20, rows: 4 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+	$(function () {
+        // $("#upload_img").click(function () {
+        //     var formData = new FormData($('#user_img')[0]);
+        //     // alert(formData.keys);
+        //     // alert(formData.values);
+        //     $.ajax({
+        //         type: 'post',
+        //         url: "/user_profiles/upload_img",
+        //         data: formData,
+        //     	dataType: "JSON",
+        //         cache: false,
+        //         processData: false,
+        //         contentType: false,
+        //     }).success(function (data) {
+        //         alert(data);
+        //     }).error(function () {
+        //         alert("上传失败");
+        //     });
+        //     return false;
+        // });
+    });
+</script>
+

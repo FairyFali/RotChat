@@ -31,6 +31,7 @@ class MachinesAdminController < ApplicationController
 		@machine = Machine.new(machine_params)
 		@machine.req_num = 0
 		@machine.duration = 0
+		@machine.score = 90
 		respond_to do |format|
 		  if @machine.save
 		    format.html { redirect_to '/admin/machines/' + @machine.id.to_s, notice: 'machine was successfully created.' }

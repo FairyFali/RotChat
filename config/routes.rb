@@ -31,6 +31,11 @@ Rails.application.routes.draw do
   delete '/admin/machines/:id(.:format)', to: 'machines_admin#destroy'
   get '/admin/machines/:id/edit(.:format)', to: 'machines_admin#edit'
 
+  # 用户个人中心
+  get 'user_profiles/show'
+  get 'user_profiles/edit'
+  patch 'user_profiles', to: 'user_profiles#update'
+  post 'user_profiles/upload_img', to: 'user_profiles#upload_img'
 
   # 根目录
   root 'home#index'

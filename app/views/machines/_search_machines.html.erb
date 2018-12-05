@@ -54,7 +54,7 @@
                         $('#result tbody').append("<tr><td>" + machine.name + "</td><td>" + machine.url + "</td><td>" + machine.api_key + "</td><td><a class='btn btn-success btn-xs' data-method='post' href='/machineusers?machine_id=" + machine.id + "'>添加</a></td></tr>");
                     });
                 } else {
-                    $('#result tbody').append("<text>没有找到符合条件的用户</text>")
+                    $('#result tbody').append("<text>没有找到符合条件的机器人</text>")
                 }
 
             }, error: function () {

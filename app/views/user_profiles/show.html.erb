@@ -1,0 +1,30 @@
+<h1>UserProfiles#show</h1>
+<a href="/user_profiles/edit" class="btn btn-info">编辑</a>
+<div>
+	<div>头像</div>
+	<div>
+		<%= image_tag current_user.img_url.nil? ? 'user-icon.png' : current_user.img_url %>
+	</div>
+	<div>昵称</div>
+	<div><%= current_user.nickname %></div>
+	<div>邮箱</div>
+	<div><%= current_user.email %></div>
+	<div>角色</div>
+	<div><%= current_user.role %></div>
+	<div>您的Rot龄：</div>
+	<div><%= (Time.new.year - current_user.created_at.year) %>年</div>
+	<div>生日</div>
+	<div><%= current_user.birthdate.strftime("%Y-%m-%d") if !current_user.birthdate.nil? %></div>
+	<div>性别</div>
+	<div><%= current_user.sex == 0? '男' : '女' if !current_user.nil? %></div>
+	<div>手机号码</div>
+	<div><%= current_user.phone %></div>
+	<div>毕业院校</div>
+	<div><%= current_user.university %></div>
+	<div>家庭住址</div>
+	<div><%= current_user.address %></div>
+	<div>职业</div>
+	<div><%= current_user.profession %></div>
+	<div>个性签名</div>
+	<div><%= current_user.memo %></div>
+</div>

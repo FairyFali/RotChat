@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_01_061259) do
+ActiveRecord::Schema.define(version: 2018_12_05_021031) do
 
   create_table "_machine_messages_old_20181130", force: :cascade do |t|
     t.integer "user_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2018_12_01_061259) do
     t.integer "duration"
     t.integer "code"
     t.integer "req_num"
+    t.string "memo"
   end
 
   create_table "machines_users", force: :cascade do |t|
@@ -87,6 +88,16 @@ ActiveRecord::Schema.define(version: 2018_12_01_061259) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role"
+    t.string "nickname"
+    t.string "img_url"
+    t.string "memo"
+    t.datetime "birthdate"
+    t.string "profession"
+    t.string "address"
+    t.string "company"
+    t.string "university"
+    t.string "phone"
+    t.string "sex"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
