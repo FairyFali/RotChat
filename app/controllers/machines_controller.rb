@@ -46,4 +46,6 @@ class MachinesController < ApplicationController
     redirect_to '/machines'
   end
 
+  
+
 end

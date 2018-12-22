@@ -1,0 +1,23 @@
+zh:
+  activerecord:
+    attributes:
+      user:
+        name: "帐号"
+        email: "邮箱"
+        password: "密码"
+        password_confirmation: "重复密码"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "不得为空"
+            email:
+              blank: "不得为空"
+            password:
+              blank: "不得为空"
+  hello: "你好"
+  robot_chat: "机器人聊天"
+  profile: "个人信息"
+  friend_chat: "好友聊天"
+  updated_success: "您已成功修改！"

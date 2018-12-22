@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   end
   # 机器人评分
   post 'machines/score', to: 'machines#score'
+  # 展示机器人
+  get '/machines_profiles/:id', to: 'machines_profiles#show'
 
   # 机器人回复信息的URL
   resources :machine_messages

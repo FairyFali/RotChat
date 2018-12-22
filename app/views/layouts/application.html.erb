@@ -30,17 +30,28 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">RotChat</a>
-        <a href="/machines">机器人聊天</a>
-        <a href="#">好友聊天</a>
-        <a href="/user_profiles/show">个人中心</a>
+        <a href="/machines"><%= t :robot_chat %></a>
+        <a href="#"><%= t :friend_chat %></a>
+        <a href="/user_profiles/show"><%= t :profile %></a>
+        <span style="text-align: right; width: 30%; display: inline-block; margin-right: 20px;">
+          <% if session[:locale] == 'zh' %>
+            <a id="en" href="#">英文显示</a>
+          <% else %>
+            <a id="zh" href="#">Chinese</a>
+          <% end %>
+          <script type="text/javascript">
+            $("#en").attr('href' , this.location.pathname+"?locale=en");
+            $("#zh").attr('href' , this.location.pathname+"?locale=zh");
+          </script>
+        </span>
       </div>
     </div>
 
     <div class="container">
       <div class="row">
         <div class="col-lg-9">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
+          <!-- <p class="notice"><%= t notice %></p>
+          <p class="alert"><%= t alert %></p> -->
           <% if current_user %>
               <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
               <%= link_to('修改密碼', edit_registration_path(:user)) %>

@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  hello_world: "Hello world!"
+  hello_flash: "Hello flash!"
+  robot_chat: "RobotChat"
+  profile: "Profile"
+  friend_chat: "FriendChat"
+  updated_success: "List was successfully updated."

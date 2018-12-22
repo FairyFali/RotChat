@@ -1,0 +1,68 @@
+<h1>Machines#profile</h1>
+<div class="row">
+	<!-- 左侧导航 -->
+  <div class="col-sm-2">
+    <%= render 'machines_profiles/navside' %>
+  </div>
+<!-- 中间聊天窗口 -->
+  <div class="col-sm-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-comments fa-fw"></i> Chat
+        <div class="btn-group pull-right">
+          <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-chevron-down"></i>
+          </button>
+          <ul class="dropdown-menu slidedown">
+
+            <li>
+              <a href="#">
+                  <i class="fa fa-info-circle fa-fw"></i> 清空历史记录
+              </a>
+            </li>
+            <li class="divider"></li>
+                
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <!--Widget body-->
+        <div id="demo-chat-body" class="collapse in">
+          <div class="nano has-scrollbar" style="height:375px">
+            <div id="memo" class="nano-content pad-all" tabindex="0" style="right: -17px;">
+              
+              ...
+            </div>
+            <div class="nano-pane">
+              <div class="nano-slider" style="height: 141px; transform: translate(0px, 0px);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- 右侧机器人信息 -->
+  <div class="col-sm-3">
+    <%= render 'machines_profiles/machine_info' %>
+  </div>
+</div>
+<script type="text/javascript">
+  s = "<%= @machine.memo %>";
+  //alert(s);
+  html = "";
+  if(s != null || s == ""){
+    as = s.split("br");
+    for(i=0;i<20;i++){
+      if(as[i][0]=='>')
+        as[i] = as[i].substring(1,as[i].length);
+      if(as[i][as[i].length-1] == '<')
+        as[i] = as[i].substring(0,as[i].length-1);
+      html += as[i];
+      html += "<br>"
+    }
+  }
+  $("#memo").html(html);
+</script>

@@ -29,13 +29,13 @@ class UserProfilesController < ApplicationController
   # /user_profiles/upload_img
   # 上传用户头像
   def upload_img
-	image = params[:img][:image];
-	unless request.get?
-	filename = uploadfile(image)
-	current_user.update('img_url':filename)
-	end
-	flash[:notice] = "上传头像成功"
-	redirect_to '/user_profiles/edit'
+  	image = params[:img][:image];
+  	unless request.get?
+  	filename = uploadfile(image)
+  	current_user.update('img_url':filename)
+  	end
+  	flash[:notice] = "上传头像成功"
+  	redirect_to '/user_profiles/edit'
   end
 
 private
