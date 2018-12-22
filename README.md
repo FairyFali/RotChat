@@ -1,27 +1,13 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
+聊天机器人的实现，调用了图灵机器人等三个接口
+# 版本选择
+数据库：SQLite3
+Ruby：2.3.4
+Rails：5.2.1
+(具体见Gemfile文件)...
+# 开发记录
 * ...
-* 2018 年12月5日 实现i上传头像功能
+* 2018 年12月5日 实现上传头像功能
 * 未能实现ajax上传头像
 * user.update('img_url':filename)，其中的冒号和前面的字符串之间不能有空格
+* 2018年12月22日 添加注释和404页面的设置
