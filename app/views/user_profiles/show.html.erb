@@ -3,7 +3,7 @@
 <div>
 	<div>头像</div>
 	<div>
-		<%= image_tag current_user.img_url.nil? ? 'user-icon.png' : current_user.img_url %>
+		<%= image_tag current_user.img_url.nil? ? 'user-icon.png' : 'upload/'+current_user.img_url, style: 'width:60px' %>
 	</div>
 	<div>昵称</div>
 	<div><%= current_user.nickname %></div>

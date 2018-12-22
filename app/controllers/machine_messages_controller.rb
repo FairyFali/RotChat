@@ -2,9 +2,11 @@ require 'net/http'
 require 'uri'
 require 'json'
 require 'addressable/uri'
+# 用户和机器人对话的controller
 class MachineMessagesController < ApplicationController
 	before_action :authenticate_user!  # 這個是 devise 提供的方法，先檢查必須登入
 	
+	# 创建用户消息，同时发送给机器人，接受机器人传过来的消息
 	def create
 		# 接收用户发来的消息
 		user_id = current_user.id
@@ -60,6 +62,7 @@ class MachineMessagesController < ApplicationController
 	end
 
 private
+	# 发送给机器人的消息并且返回结果
 	def send_message_to_api1(msg, api_key, url_machine, user_id)
 		data = {
 		    "reqType": 0,
@@ -88,6 +91,7 @@ private
 		return result
 	end
 
+	# 多种类型机器人，因为机器人API的不同而需要写不同的方法
 	def send_message_to_api2(msg, url)
 		url = Addressable::URI.parse(url + msg)
 		response = Net::HTTP.get_response(url)
@@ -95,6 +99,7 @@ private
 		return response.body.encode("ASCII-8BIT").force_encoding("utf-8")
 	end
 
+	# 同理，第三种类型的机器人
 	def send_message_to_api3(msg, url)
 		ha = JSON.parse(send_message_to_api2(msg, url))
 		# 替换{br}为空格

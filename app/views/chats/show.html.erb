@@ -1,9 +1,5 @@
 <h1>Chats#show</h1>
-<ul>
-	<% @user_machines.each do |m| %>
-		<li>机器人客服<%=m.id %></li>
-	<% end %>
-</ul>
+<% render 'chats/navside' %>
 <div>聊天界面</div>
-
+<div style="width:500px;height:200px;border:1px black solid;">没有聊天窗口</div>
 <div>聊天信息</div>

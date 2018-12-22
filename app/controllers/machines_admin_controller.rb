@@ -1,9 +1,8 @@
+# Machine的管理controller，对Machine进行增删查改，只要管理员权限才能使用
 class MachinesAdminController < ApplicationController
 	before_action :set_machine, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!  # 這個是 devise 提供的方法，先檢查必須登入
 	before_action :authenticate_admin # 再檢查是否有權限
-
-
 
 	# GET /machines
 	# GET /machines.json

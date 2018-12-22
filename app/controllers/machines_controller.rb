@@ -1,15 +1,18 @@
+# Machine的Controller，用于展示Machine的信息、查询Machine、对Machine进行评分
 class MachinesController < ApplicationController
   before_action :authenticate_user!  # 這個是 devise 提供的方法，先檢查必須登入
 	
+  # 获得当前用户的机器人信息，返回的页面是和机器人的聊天主页
   def index
   	@user_machines = current_user.machines
   end
-
+  # 展示当前用户的机器人信息，返回的页面是用户的指定机器人的聊天页面，并且展示当前机器人的信息
   def show
   	@machine = Machine.find(params[:id])
   	@user_machines = current_user.machines
   	@machine_message = MachineMessage.new
-  	@messages = MachineMessage.find_by_sql("select * from machine_messages where user_id = " +
+  	@messages = MachineMessage.find_by_sql(
+            "select * from machine_messages where user_id = " +
   					current_user.id.to_s +
   					" and machine_id = " +
   					@machine.id.to_s + 
@@ -20,6 +23,7 @@ class MachinesController < ApplicationController
   # json请求
   # /machines/index_json get
   # 返回json数据的machines数据
+  # 模糊查询当前查询的机器人信息
   def index_json
   	p params[:query]
   	machines = Machine.where("name like ?", "%#{params[:query]}%")

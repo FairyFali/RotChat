@@ -1,11 +1,4 @@
 <div>通讯录</div>
-<div>通讯录</div>
 <ul>
-	<% @user_machines.each do |m| %>
-		<li>
-			<%= link_to chat_path(chatroom), class: 'list-group-item' do %>
-                机器人客服<%= m.id %>
-            <% end %>
-		</li>
-	<% end %>
+	用户列表
 </ul>

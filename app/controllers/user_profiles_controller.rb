@@ -1,18 +1,23 @@
+# 用户个人信息Controller
 class UserProfilesController < ApplicationController
   before_action :authenticate_user!  # 這個是 devise 提供的方法，先檢查必須登入
 
+  # 展示用户个人信息
   def show
   end
 
+  # 编辑用户个人信息
   def edit
   	@user = current_user
   end
 
+  # 更新用户个人信息
   def update
   	@user = current_user
   	respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to '/user_profiles/show', notice: 'user was successfully updated.' }
+        format.html { redirect_to '/user_profiles/show', 
+        			  notice: 'user was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -22,6 +27,7 @@ class UserProfilesController < ApplicationController
   end
 
   # /user_profiles/upload_img
+  # 上传用户头像
   def upload_img
 	image = params[:img][:image];
 	unless request.get?
@@ -33,13 +39,16 @@ class UserProfilesController < ApplicationController
   end
 
 private
-
+  
+  # 获得前端上传的用户数据的参数信息
   def user_params
       params.require(:user).permit(:img_url, :nickname, :sex, :birthdate, 
 								   :phone, :university, :address, :profession,
 								   :memo)
   end
 
+  # 上传文件
+  # 上传头像图片
   def uploadfile(file)
     if !file.original_filename.empty?
       @filename = file.original_filename

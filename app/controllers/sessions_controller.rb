@@ -1,3 +1,4 @@
+# 未使用
 class SessionsController < ApplicationController
   def new
   end

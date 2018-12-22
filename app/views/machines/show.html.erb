@@ -35,10 +35,25 @@
               <ul class="list-unstyled media-block">
 
                 <% @messages.each do |m|%>
-                	<li class="mar-btm">
-          					  <div class="media-<%= m.type2==1 ? 'right' : 'left' %>">
-          					    <%= image_tag "user-icon.png", class: "img-sm", style: "width:20px" %>
-          					  </div>
+                	<li class="mar-btm" style="text-align: <%= m.type2==1 ? 'right' : 'left' %>;">
+                    <% if m.type2==1 %>
+                      <!-- 用户发送的消息 -->
+                      <% if !m.user.img_url.nil? %>
+                        <div class="media-right" style="float: right;">
+                          <%= image_tag "upload/"+m.user.img_url, class: "img-sm", style: "width:20px" %>
+                        </div>
+                      <% else %>
+                        <div class="media-right" style="float: right;">
+                          <%= image_tag "user-icon.png", class: "img-sm", style: "width:20px" %>
+                        </div>
+                      <% end %>
+                    <% else %>
+                      <!-- 机器人的对话 -->
+                      <div class="media-left" style="float: left;">
+                        <%= image_tag "user-icon.png", class: "img-sm", style: "width:20px" %>
+                      </div>
+                    <% end %>
+          					  
           					  <div class="media-body pad-hor <%= "speech-right" if m.type2==1 %>">
           					    <div class="speech">
           					      <p class="media-heading"><%= m.type2==1 ? '我' : m.machine.name %>

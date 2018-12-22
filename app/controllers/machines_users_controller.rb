@@ -1,3 +1,4 @@
+# 用户和机器人的关联controller
 class MachinesUsersController < ApplicationController
 
 	# get /machinesusers?machine_id=

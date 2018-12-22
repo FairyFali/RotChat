@@ -3,6 +3,8 @@ class ListsController < ApplicationController
   before_action :authenticate_user!  # 這個是 devise 提供的方法，先檢查必須登入
   before_action :authenticate_admin # 再檢查是否有權限
 
+  # devise自动生成的controller，供测试使用
+
   # GET /lists
   # GET /lists.json
   def index

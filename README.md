@@ -22,6 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
+* 2018 年12月5日 实现i上传头像功能
 * 未能实现ajax上传头像
 * user.update('img_url':filename)，其中的冒号和前面的字符串之间不能有空格
