@@ -1,6 +1,12 @@
+require 'net/http'
+require 'uri'
+require 'json'
+require 'addressable/uri'
+
 # Machine的Controller，用于展示Machine的信息、查询Machine、对Machine进行评分
 class MachinesController < ApplicationController
-  before_action :authenticate_user!  # 這個是 devise 提供的方法，先檢查必須登入
+  # 這個是 devise 提供的方法，先檢查必須登入
+  before_action :authenticate_user! , only: [:show, :index, :score] 
 	
   # 获得当前用户的机器人信息，返回的页面是和机器人的聊天主页
   def index
@@ -46,6 +52,51 @@ class MachinesController < ApplicationController
     redirect_to '/machines'
   end
 
+  # 新建machine的blog博客
+  def create_blog
+    machine = Machine.find(params[:id])
+    # 异常处理
+    begin
+      params2 = {}  
+      params2["title"] = URI::escape(machine.name)
+      params2["text"] = machine.memo
+      uri = URI.parse("http://localhost:3000/json/create/blog")
+      res = Net::HTTP.post_form(uri, params2)
+      #返回的cookie 
+      puts res.header['set-cookie']  
+      #返回的html body
+      puts res.body
+      h = JSON.parse(res.body)
+      p h
+      if h["id"].nil?
+        flash[:notice] = "创建博客失败"
+      else
+        machine.bolg_id = h["id"]
+        machine.save
+        flash[:notice] = "创建博客成功"
+      end
+    rescue
+      p "抛出异常"
+    ensure
+      flash[:notice] = "博客系统异常，不能创建博客"
+    end
+    redirect_to "/machines_profiles/" + machine.id.to_s
+
+  end
+
+  # 获取machine的blog的评论
+  def get_blog_comment
+    id = params[:id]
+    machine = Machine.find(id)
+    blog_id = machine.bolg_id
+    url = Addressable::URI.parse("http://localhost:3000/json/get/blog/comment?id=" +
+          blog_id.to_s)
+    response = Net::HTTP.get_response(url)
+    p response.body.encode("ASCII-8BIT").force_encoding("utf-8")
+    h = JSON.parse(response.body.encode("ASCII-8BIT").force_encoding("utf-8"))
+    flash[:comments] = h
+    redirect_to "/machines_profiles/" + machine.id.to_s
+  end
   
 
 end

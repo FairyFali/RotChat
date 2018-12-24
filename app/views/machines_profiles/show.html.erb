@@ -41,6 +41,27 @@
           </div>
         </div>
       </div>
+
+      <div class="panel-footer">
+        <% if @machine.bolg_id.nil? %>
+        <!-- machines/create/:id/blog -->
+          <%= link_to "创建博客", "/machines/create/"+@machine.id.to_s+"/blog", class: "btn btn-default" %>
+        <% else %>
+          <% if @comments.nil? %>
+            暂无评论
+          <% else %>
+            <% if @comments.length > 0 %>
+              <% for c in @comments do%>
+                commenter:<%= c["commenter"]%><br>
+                body:<%= c["body"]%><br>
+              <% end %>
+            <% else %>
+              暂无评论
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
   </div>
 
@@ -49,6 +70,7 @@
     <%= render 'machines_profiles/machine_info' %>
   </div>
 </div>
+
 <script type="text/javascript">
   s = "<%= @machine.memo %>";
   //alert(s);

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_05_021031) do
+ActiveRecord::Schema.define(version: 2018_12_24_011914) do
 
   create_table "_machine_messages_old_20181130", force: :cascade do |t|
     t.integer "user_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2018_12_05_021031) do
     t.integer "code"
     t.integer "req_num"
     t.string "memo"
+    t.integer "bolg_id"
   end
 
   create_table "machines_users", force: :cascade do |t|

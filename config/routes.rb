@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :lists
   devise_for :users
   get 'welcome/index'
+
+  # 远程调用controller， 无需权限
+  get 'json/machines', to: 'json#search_machines'
   
   # 聊天室
   resources :chats
@@ -38,6 +41,10 @@ Rails.application.routes.draw do
   get 'user_profiles/edit'
   patch 'user_profiles', to: 'user_profiles#update'
   post 'user_profiles/upload_img', to: 'user_profiles#upload_img'
+
+  # 与博客系统互相调用
+  get 'machines/create/:id/blog', to: 'machines#create_blog'
+  # get 'machines/gain/blog/comment/:id', to: 'machines#get_blog_comment'
 
   # 根目录
   root 'home#index'

@@ -4,5 +4,25 @@ class MachinesProfilesController < ApplicationController
 	def show
 		@machine = Machine.find(params[:id])
 		@user_machines = current_user.machines
+		# 异常处理
+		begin
+			@comments = get_comments(params[:id])
+		rescue
+			p "MachinesProfilesController出现异常"
+		ensure
+			
+		end
+	end
+
+private
+	def get_comments(id)
+	    machine = Machine.find(id)
+	    blog_id = machine.bolg_id
+	    url = Addressable::URI.parse("http://localhost:3000/json/get/blog/comment?id=" +
+	          blog_id.to_s)
+	    response = Net::HTTP.get_response(url)
+	    p response.body.encode("ASCII-8BIT").force_encoding("utf-8")
+	    h = JSON.parse(response.body.encode("ASCII-8BIT").force_encoding("utf-8"))
+	    return h
 	end
 end
