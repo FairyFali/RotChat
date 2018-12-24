@@ -77,8 +77,9 @@ class MachinesController < ApplicationController
       end
     rescue
       p "抛出异常"
-    ensure
       flash[:notice] = "博客系统异常，不能创建博客"
+    ensure
+      # 异常模块必须执行的代码
     end
     redirect_to "/machines_profiles/" + machine.id.to_s
 

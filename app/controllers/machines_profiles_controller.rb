@@ -6,11 +6,13 @@ class MachinesProfilesController < ApplicationController
 		@user_machines = current_user.machines
 		# 异常处理
 		begin
-			@comments = get_comments(params[:id])
+			if !@machine.bolg_id.nil?
+				@comments = get_comments(params[:id])
+			end
 		rescue
 			p "MachinesProfilesController出现异常"
 		ensure
-			
+
 		end
 	end
 

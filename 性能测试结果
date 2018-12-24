@@ -1,0 +1,120 @@
+TOP: 51.9883 MiB
+  rails/all: 22.4766 MiB
+    active_record/railtie: 9.0078 MiB
+      active_record: 7.6523 MiB (Also required by: active_storage, orm_adapter/adapters/active_record)
+        active_record/connection_adapters/abstract_adapter: 3.5313 MiB
+          active_record/connection_adapters/abstract/schema_statements: 1.1484 MiB
+            active_record/migration/join_table: 0.5742 MiB
+              active_record/migration: 0.5703 MiB
+          active_record/connection_adapters/abstract/quoting: 0.543 MiB
+            active_support/multibyte/chars: 0.4336 MiB
+          active_support/callbacks: 0.4141 MiB
+        arel: 3.0117 MiB
+          arel/nodes: 1.1914 MiB
+          arel/visitors: 1.0742 MiB
+            arel/visitors/to_sql: 0.418 MiB
+        active_model/attribute_set: 0.3477 MiB
+        active_record/attribute_methods: 0.3203 MiB
+      action_controller/railtie: 1.2383 MiB (Also required by: rails/all, sprockets/railtie)
+        action_controller: 0.9727 MiB (Also required by: responders)
+          action_controller/metal/live: 0.5 MiB
+            action_dispatch/http/response: 0.4609 MiB
+              rack/response: 0.3164 MiB
+          action_controller/metal/strong_parameters: 0.4336 MiB
+    rails: 7.8945 MiB (Also required by: active_record/railtie, active_model/railtie, and 10 others)
+      active_support: 4.6641 MiB (Also required by: active_support/railtie, active_support/i18n_railtie, and 14 others)
+        active_support/dependencies/autoload: 2.707 MiB (Also required by: rails, active_support/rails)
+          active_support/inflector/methods: 2.6641 MiB (Also required by: active_support/inflector, active_support/core_ext/string/inflections, and 3 others)
+            active_support/inflections: 2.4883 MiB (Also required by: active_support/inflector)
+              active_support/inflector/inflections: 2.2422 MiB (Also required by: active_support/inflector)
+                active_support/i18n: 1.0703 MiB (Also required by: active_support/inflector/transliterate, abstract_controller)
+                  i18n: 0.9219 MiB
+                    i18n/exceptions: 0.7227 MiB (Also required by: action_view/helpers/translation_helper)
+                      cgi: 0.6445 MiB (Also required by: active_support/core_ext/object/to_query, action_view/helpers/form_helper, and 3 others)
+                        cgi/core: 0.4063 MiB
+                concurrent/map: 0.7305 MiB (Also required by: i18n, active_support/notifications/fanout, and 7 others)
+                  concurrent/synchronization: 0.5 MiB (Also required by: concurrent/atomic/event, concurrent/executor/abstract_executor_service, and 29 others)
+                active_support/deprecation: 0.3398 MiB (Also required by: rails/application, active_support/duration, and 2 others)
+        active_support/logger: 1.832 MiB
+          active_support/logger_silence: 1.8047 MiB
+            concurrent: 1.7852 MiB (Also required by: sprockets/manifest)
+              concurrent/configuration: 0.4844 MiB (Also required by: concurrent/scheduled_task, concurrent/options, and 2 others)
+              concurrent/atomics: 0.375 MiB (Also required by: concurrent/executor/simple_executor_service)
+              concurrent/executors: 0.3008 MiB
+      active_support/railtie: 1.8281 MiB
+        active_support/i18n_railtie: 1.7734 MiB
+          active_support/file_update_checker: 1.0117 MiB (Also required by: rails/application/configuration)
+            active_support/core_ext/time/calculations: 1.0117 MiB (Also required by: active_support/core_ext/time, active_support/core_ext/numeric/time)
+              active_support/core_ext/time/conversions: 0.582 MiB (Also required by: active_support/core_ext/time, active_support/core_ext/date_time/conversions)
+                active_support/values/time_zone: 0.5742 MiB (Also required by: active_support/time_with_zone, active_support/core_ext/date_time/conversions)
+                  tzinfo: 0.4883 MiB
+          rails/railtie/configuration: 0.7305 MiB (Also required by: rails/engine/configuration)
+            rails/configuration: 0.7266 MiB
+              active_support/core_ext/object: 0.5234 MiB
+                active_support/core_ext/object/json: 0.3984 MiB (Also required by: active_support/json/encoding)
+      rails/application: 0.9219 MiB
+        yaml: 0.3945 MiB (Also required by: active_support/encrypted_configuration, rails/secrets, and 2 others)
+          psych: 0.3906 MiB
+      action_dispatch/railtie: 0.375 MiB (Also required by: action_controller/railtie)
+        action_dispatch: 0.3047 MiB (Also required by: action_controller)
+    sprockets/railtie: 3.5078 MiB (Also required by: less/rails, less/rails/railtie)
+      sprockets/rails/context: 2.1211 MiB
+        action_view/helpers: 2.1133 MiB
+          action_view/helpers/form_helper: 1.6445 MiB (Also required by: action_view/helpers/form_options_helper)
+            action_view/helpers/form_tag_helper: 1.4492 MiB
+              action_view/helpers/text_helper: 1.4141 MiB
+                action_view/helpers/sanitize_helper: 1.4102 MiB
+                  rails-html-sanitizer: 1.4102 MiB
+                    loofah: 1.3828 MiB
+                      nokogiri: 1.082 MiB
+                        nokogiri/xml: 0.4063 MiB
+                        nokogiri/html: 0.3594 MiB
+      sprockets: 1.2617 MiB (Also required by: sprockets/rails/context, sprockets/rails/helper, and 2 others)
+        sprockets/environment: 0.6367 MiB
+          sprockets/base: 0.6094 MiB (Also required by: sprockets/cached_environment, sprockets/legacy)
+            sprockets/configuration: 0.3906 MiB (Also required by: sprockets)
+    active_storage/engine: 1.4063 MiB
+      action_dispatch/routing/route_set: 1.1563 MiB
+        action_dispatch/journey: 0.5313 MiB
+          action_dispatch/journey/router: 0.3828 MiB
+        action_dispatch/http/request: 0.418 MiB (Also required by: action_dispatch/routing/redirection)
+    rails/test_unit/railtie: 0.4688 MiB
+      rails/test_unit/line_filtering: 0.4609 MiB
+        rails/test_unit/runner: 0.4609 MiB
+          rake/file_list: 0.4609 MiB
+  less-rails: 10.6016 MiB
+    less/rails: 10.5742 MiB
+      less: 9.8594 MiB (Also required by: tilt/less)
+        less/loader: 2.4844 MiB
+          net/http: 2.3242 MiB
+            net/protocol: 0.8828 MiB
+              socket: 0.6523 MiB (Also required by: puma)
+  typhoeus: 5.9883 MiB
+    ethon: 5.3828 MiB
+      ethon/curl: 3.6523 MiB
+        ethon/curls/settings: 3.3711 MiB
+      ffi: 1.0391 MiB
+        ffi/ffi: 0.8242 MiB
+      ethon/easy: 0.4766 MiB
+  bootstrap-sass: 4.5 MiB
+    sass: 4.4414 MiB (Also required by: sass/rails/helpers, sass/rails/importer, and 4 others)
+      sass/engine: 3.9102 MiB
+        sass/scss: 0.9688 MiB
+          sass/scss/parser: 0.6914 MiB
+        sass/script: 0.9531 MiB (Also required by: sass/script/css_parser)
+          sass/script/value: 0.5508 MiB
+        sass/selector: 0.3438 MiB
+      sass/version: 0.4141 MiB
+  devise: 4.125 MiB
+    devise/rails: 1.0352 MiB
+      devise/rails/routes: 0.9844 MiB
+        action_dispatch/routing/mapper: 0.8203 MiB
+    warden: 0.6523 MiB
+    active_support/dependencies: 0.6328 MiB
+  therubyracer: 1.9805 MiB
+    v8: 1.9727 MiB (Also required by: execjs)
+      v8/conversion/indentity: 0.5 MiB
+        ref: 0.4531 MiB
+      v8/init: 0.4531 MiB
+  twitter-bootstrap-rails: 0.4766 MiB
+    twitter/bootstrap/rails/engine: 0.3828 MiB (Also required by: twitter/bootstrap/rails/bootstrap)

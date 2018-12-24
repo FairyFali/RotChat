@@ -73,11 +73,14 @@
 
 <script type="text/javascript">
   s = "<%= @machine.memo %>";
-  //alert(s);
+  // alert(s);
   html = "";
-  if(s != null || s == ""){
+  if(s != null && s != ""){
     as = s.split("br");
-    for(i=0;i<20;i++){
+    // alert(as);
+    // alert(as.length);
+    len = as.length > 20?20 : as.length;
+    for(i=0;i<len;i++){
       if(as[i][0]=='>')
         as[i] = as[i].substring(1,as[i].length);
       if(as[i][as[i].length-1] == '<')

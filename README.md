@@ -20,7 +20,8 @@ require 'open-uri'
 puts URI::encode 'C#' #输出C%23
 puts URI::decode 'C%23' #输出C#
 * 如何在controller指定页面跳转，如show方法我想跳转到除了指定位置的show.html.erb之外的其他页面我该如何处理
-* 2018年12月24日 子系统之间的互相调用，机器人系统调用博客系统的评论功能，使用异常处理来屏幕blog的崩溃情况，不会对本系统造成影响。
+* 2018年12月24日 子系统之间的互相调用，机器人系统调用博客系统的评论功能 https://github.com/FairyFali/Blog.git ，使用异常处理来屏幕blog的崩溃情况，不会对本系统造成影响。bug：blog的标题字段中文就不能插入数据库，而内容字段中文可以插入数据库，但是另一个数据库的修改插入中文都没有问题。
+* benchmark性能测试，加入gem derailed_benchmark，命令：bundle exec derailed bundle:mem
 # I18N国际化
 只是使用了它的一点点语言转化功能，没有使用太明白，为什么notice显示出来的行数有很多，对某些串没有转化成功。
 # 测试覆盖率检测·
