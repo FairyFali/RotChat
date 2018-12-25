@@ -6,4 +6,10 @@ class MachineTest < ActionDispatch::IntegrationTest
 	  get "/admin/machines/new"
 	  assert_response 302
 	end
+
+	test "show machine" do
+		get '/admin/machines/1'
+		assert_response 302
+	end
+	
 end

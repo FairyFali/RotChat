@@ -59,7 +59,8 @@
           					      <p class="media-heading"><%= m.type2==1 ? '我' : m.machine.name %>
           					        <text class="speech-time">
           					          <i class="fa fa-clock-o fa-fw"></i>
-          					          <%= m.created_at.to_formatted_s(:db) %>
+          					          <%= m.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+                              
           					        </text>
           					      </p>
           					      <p style="margin-bottom: 5px; margin-top: 5px;">

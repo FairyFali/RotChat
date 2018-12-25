@@ -20,5 +20,12 @@ module RotChat
 	config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
 	config.i18n.default_locale = :en
 
+  # 从ActiveRecord中取的时候是本地时间
+  config.time_zone = "Beijing" 
+  # 存入数据库的时间也是本地时区的时间
+  config.active_record.default_timezone = :local 
+  # 关闭以UTC格式存入数据库并读取以本地时区格式读取的功能
+  config.active_record.time_zone_aware_attributes = false 
+
   end
 end

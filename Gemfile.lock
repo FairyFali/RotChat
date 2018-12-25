@@ -109,6 +109,7 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     heapy (0.1.4)
+    hirb (0.7.3)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -284,6 +285,7 @@ DEPENDENCIES
   derailed_benchmarks
   devise
   flamegraph
+  hirb
   jbuilder (~> 2.5)
   jquery-rails
   less-rails
