@@ -19,56 +19,119 @@
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
     <![endif]-->
+    <style type="text/css">
+      body{margin: 0;}
+      #application_head a {color: white; display: inline-block; line-height: 45px;padding-left:30px; }
+      #application_head a:hover {color: white;}
+      #application_head a:visited {color: white;}
+
+      .footer_right li{display: inline-block; margin-left: 10px;}
+      .footer_right li a{color: #0366d6;}
+      .footer_right li a:hover{background: none;}
+    </style>
   </head>
   <body>
+    <div style="width: 100%; background-color: black;" id="application_head">
+      <div class="navbar navbar-default navbar-fixed-top" style="background-color: black;">
+        <div class="container">
 
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">RotChat</a>
-        <a href="/machines"><%= t :robot_chat %></a>
-        <a href="#"><%= t :friend_chat %></a>
-        <a href="/user_profiles/show"><%= t :profile %></a>
-        <span style="text-align: right; width: 30%; display: inline-block; margin-right: 20px;">
-          <% if session[:locale] == 'zh' %>
-            <a id="en" href="#">英文显示</a>
-          <% else %>
-            <a id="zh" href="#">Chinese</a>
-          <% end %>
-          <script type="text/javascript">
-            $("#en").attr('href' , this.location.pathname+"?locale=en");
-            $("#zh").attr('href' , this.location.pathname+"?locale=zh");
-          </script>
-        </span>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="myNavbar" >
+            <a class="navbar-brand" href="/" style="padding: 3px;color: white;">
+              <%= image_tag "RotChat.png", class: "img-circle image-responsive", style: "width:40px; display:inline-block;" %>
+              RotChat
+            </a>
+
+            <span style="text-align: left; width: ; display: inline-block; margin-left: 320px; text-decoration: underline;">
+              <% if session[:locale] == 'zh' %>
+                <a id="en" href="#">英文显示</a>
+              <% else %>
+                <a id="zh" href="#">Chinese</a>
+              <% end %>
+              <script type="text/javascript">
+                $("#en").attr('href' , this.location.pathname+"?locale=en");
+                $("#zh").attr('href' , this.location.pathname+"?locale=zh");
+              </script>
+            </span>
+
+            <ul class="nav navbar-nav navbar-left">
+              <li>
+                <a href="/machines"><%= t :robot_chat %></a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+              <li>
+                <a href="/admin/machines"><%= t :machine %></a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+              <li>
+                <a href="/user_profiles/show"><%= t :profile %></a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+              <li>
+                <%= link_to "Lists", lists_path %>
+              </li>
+            </ul>
+            <% if current_user %>
+              <ul class="nav navbar-nav navbar-left">
+                <li>
+                <%= link_to('登出', destroy_user_session_path, :method => :delete) %>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-left">
+                <li>
+                <%= link_to('修改密碼', edit_registration_path(:user)) %>
+                </li>
+              </ul>
+            <% else %>
+              <ul class="nav navbar-nav navbar-left">
+                <li>
+                <%= link_to('註冊', new_registration_path(:user)) %>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-left">
+                <li>
+                <%= link_to('登入', new_session_path(:user)) %>
+                </li>
+              </ul>
+            <% end %>
+          </div>
+
+        </div>
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" style="margin-top: 100px;">
       <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-12">
           <!-- <p class="notice"><%= t notice %></p>
           <p class="alert"><%= t alert %></p> -->
-          <% if current_user %>
-              <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
-              <%= link_to('修改密碼', edit_registration_path(:user)) %>
-            <% else %>
-              <%= link_to('註冊', new_registration_path(:user)) %> |
-              <%= link_to('登入', new_session_path(:user)) %>
-          <% end %>
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
       </div><!--/row-->
-
-
     </div> <!-- /container -->
-    <div class="container">
-      <footer>
-        <p>&copy; Company 2018</p>
+
+    <div class="navbar" style="margin-top: 50px;">
+      <footer class="container">
+        <div class="row"> 
+          <p class="col-lg-4 text-center">&copy; 高级软件工程 RotChat机器人聊天系统 2018, Stu.</p>
+          <p class="col-lg-4 text-center"><%= image_tag "RotChat2.png", class: "img-circle image-responsive", style: "width:40px; border:1px solid #999;" %></p>
+          <ul class="footer_right">
+            <li><a href="/machines"><%= t :robot_chat %></a></li>
+            <li><a href="/admin/machines"><%= t :machine %></a></li>
+            <li><a href="/user_profiles/show"><%= t :profile %></a></li>
+            <li><a href="http://localhost:3000">Blog</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </div>
       </footer>
     </div>
   </body>

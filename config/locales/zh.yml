@@ -20,4 +20,5 @@ zh:
   robot_chat: "机器人聊天"
   profile: "个人信息"
   friend_chat: "好友聊天"
+  machine: "机器人管理"
   updated_success: "您已成功修改！"

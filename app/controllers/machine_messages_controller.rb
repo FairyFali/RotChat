@@ -23,16 +23,16 @@ class MachineMessagesController < ApplicationController
 						:type2=>1)
 		if machine_message2.save
 			# 创造machine返回的消息
+			# 计时
 			start_time = Time.new
-			msg = ""
-			case @machine.code
-			when 1
-				msg = send_message_to_api1(text, @machine.api_key, @machine.url, user_id)
-			when 2
-				msg = send_message_to_api2(text, @machine.url)
-			when 3
-				msg = send_message_to_api3(text, @machine.url)
-			end
+			# 工厂模式的调用方法
+			factory = MachineFactory.new
+			m = factory.createMachine(@machine.code)
+			m.api_key = @machine.api_key
+			m.url = @machine.url
+			p m
+			# 发送信息给api
+			msg = m.send_message_to_api(text)
 			end_time = Time.new
 			# 计算时间
 			duration = (end_time - start_time)*1000000

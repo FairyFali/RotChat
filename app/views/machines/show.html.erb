@@ -1,4 +1,164 @@
-<h1>Machines#show</h1>
+<style type="text/css">
+  #user-img {
+    width: 20px;
+    height: 20px;
+    / * make it responsive * / 
+    max-width：100％; 
+    width：100％; 
+    height：auto; 
+    display：block; 
+    / * div height与width相同* / 
+    padding-top：100％; 
+    
+    / *让它成圆* / 
+    border-radius：50％; 
+    
+    / *以图像中心为中心* / 
+    background-position-y：center; 
+    background-position-x：center; 
+    background-repeat：no-repeat; 
+    
+    / *它使线索事情，需要更小的维度填充div * / 
+    background-size：cover; 
+    
+    / *它是可选的，用于使此div以父节点为中心* / 
+    margin：0 auto; 
+    top：0; 
+    left：0; 
+    right：0; 
+    bottom：0; 
+  } 
+
+  /*气泡css*/
+  .triangle-border {
+    position:relative;
+    padding:15px;
+    margin:1em 0 3em;
+    border:5px solid #5a8f00;
+    color:#333;
+    background:#fff;
+
+    /* css3 */
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+  }
+
+  /* Variant : for left positioned triangle
+  ------------------------------------------ */
+
+  .triangle-border.left {
+    margin-left:30px;
+  }
+
+  /* Variant : for right positioned triangle
+  ------------------------------------------ */
+
+  .triangle-border.right {
+    margin-right:30px;
+  }
+
+  /* THE TRIANGLE
+  ------------------------------------------------------------------------------------------------------------------------------- */
+
+  .triangle-border:before {
+    content:"";
+    display:block; /* reduce the damage in FF3.0 */
+    position:absolute;
+    bottom:-40px; /* value = - border-top-width - border-bottom-width */
+    left:40px; /* controls horizontal position */
+    width:0;
+    height:0;
+    border:20px solid transparent;
+    border-top-color:#5a8f00;
+  }
+
+  /* creates the smaller  triangle */
+  .triangle-border:after {
+    content:"";
+    display:block; /* reduce the damage in FF3.0 */
+    position:absolute;
+    bottom:-26px; /* value = - border-top-width - border-bottom-width */
+    left:47px; /* value = (:before left) + (:before border-left) - (:after border-left) */
+    width:0;
+    height:0;
+    border:13px solid transparent;
+    border-top-color:#fff;
+  }
+
+  /* Variant : top
+  ------------------------------------------ */
+
+  /* creates the larger triangle */
+  .triangle-border.top:before {
+    top:-40px; /* value = - border-top-width - border-bottom-width */
+    right:40px; /* controls horizontal position */
+    bottom:auto;
+    left:auto;
+    border:20px solid transparent;
+    border-bottom-color:#5a8f00;
+  }
+
+  /* creates the smaller  triangle */
+  .triangle-border.top:after {
+    top:-26px; /* value = - border-top-width - border-bottom-width */
+    right:47px; /* value = (:before right) + (:before border-right) - (:after border-right) */
+    bottom:auto;
+    left:auto;
+    border:13px solid transparent;
+    border-bottom-color:#fff;
+  }
+
+  /* Variant : left
+  ------------------------------------------ */
+
+  /* creates the larger triangle */
+  .triangle-border.left:before {
+    top:10px; /* controls vertical position */
+    left:-30px; /* value = - border-left-width - border-right-width */
+    bottom:auto;
+    border-width:15px 30px 15px 0;
+    border-style:solid;
+    border-color:transparent #5a8f00;
+  }
+
+  /* creates the smaller  triangle */
+  .triangle-border.left:after {
+    top:16px; /* value = (:before top) + (:before border-top) - (:after border-top) */
+    left:-21px; /* value = - border-left-width - border-right-width */
+    bottom:auto;
+    border-width:9px 21px 9px 0;
+    border-style:solid;
+    border-color:transparent #fff;
+  }
+
+  /* Variant : right
+  ------------------------------------------ */
+
+  /* creates the larger triangle */
+  .triangle-border.right:before {
+    top:10px; /* controls vertical position */
+    right:-30px; /* value = - border-left-width - border-right-width */
+    bottom:auto;
+    left:auto;
+    border-width:15px 0 15px 30px;
+    border-style:solid;
+    border-color:transparent #5a8f00;
+  }
+
+  /* creates the smaller  triangle */
+  .triangle-border.right:after {
+    top:16px; /* value = (:before top) + (:before border-top) - (:after border-top) */
+    right:-21px; /* value = - border-left-width - border-right-width */
+    bottom:auto;
+    left:auto;
+    border-width:9px 0 9px 21px;
+    border-style:solid;
+    border-color:transparent #fff;
+  }
+
+</style>
+<h1>机器人聊天室</h1>
 <div class="row">
 	<!-- 左侧导航 -->
   <div class="col-sm-2">
@@ -27,11 +187,11 @@
         </div>
       </div>
 
-      <div class="panel-body">
+      <div class="panel-body" style="height: 377px;">
         <!--Widget body-->
         <div id="demo-chat-body" class="collapse in">
-          <div class="nano has-scrollbar" style="height:375px">
-            <div class="nano-content pad-all" tabindex="0" style="right: -17px;">
+          <div class="nano has-scrollbar" style="height:395px">
+            <div class="nano-content pad-all row pre-scrollable" tabindex="0" style="right: -17px; padding: 0 10px;height:395px;">
               <ul class="list-unstyled media-block">
 
                 <% @messages.each do |m|%>
@@ -40,7 +200,7 @@
                       <!-- 用户发送的消息 -->
                       <% if !m.user.img_url.nil? %>
                         <div class="media-right" style="float: right;">
-                          <%= image_tag "upload/"+m.user.img_url, class: "img-sm", style: "width:20px" %>
+                          <%= image_tag "upload/"+m.user.img_url, class: "img-circle image-responsive", style: "width:20px", id: "user-img" %>
                         </div>
                       <% else %>
                         <div class="media-right" style="float: right;">
@@ -56,14 +216,12 @@
           					  
           					  <div class="media-body pad-hor <%= "speech-right" if m.type2==1 %>">
           					    <div class="speech">
-          					      <p class="media-heading"><%= m.type2==1 ? '我' : m.machine.name %>
+          					      <p style="width: 350px; margin-top:0;margin-bottom:9px; display: inline-block;" class="triangle-border <%= m.type2==1 ? 'right' : 'left' %>"><%= m.type2==1 ? '我' : m.machine.name %>
           					        <text class="speech-time">
           					          <i class="fa fa-clock-o fa-fw"></i>
           					          <%= m.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-                              
           					        </text>
-          					      </p>
-          					      <p style="margin-bottom: 5px; margin-top: 5px;">
+                            <br>
                             <%= m.text %>
                           </p>
           					    </div>
@@ -72,9 +230,6 @@
                 <% end %>
 
               </ul>
-            </div>
-            <div class="nano-pane">
-              <div class="nano-slider" style="height: 141px; transform: translate(0px, 0px);"></div>
             </div>
           </div>
         </div>

@@ -21,7 +21,7 @@
   require 'open-uri'
   puts URI::encode 'C#' #输出C%23
   puts URI::decode 'C%23' #输出C#
-* 如何在controller指定页面跳转，如show方法我想跳转到除了指定位置的show.html.erb之外的其他页面我该如何处理
+* 如何在controller指定页面跳转，如show方法我想跳转到除了指定位置的show.html.erb之外的其他页面我该如何处理?
 * 2018年12月24日 子系统之间的互相调用，机器人系统调用博客系统的评论功能 https://github.com/FairyFali/Blog.git ，使用异常处理来屏幕blog的崩溃情况，不会对本系统造成影响。bug：blog的标题字段中文就不能插入数据库，而内容字段中文可以插入数据库，但是另一个数据库的修改插入中文都没有问题。
 * benchmark性能测试，加入gem derailed_benchmark，命令：bundle exec derailed bundle:mem
 * 尝试nginx部署，没有成功，报404错误。
@@ -32,11 +32,17 @@
     config.active_record.default_timezone = :local 
   * 关闭以UTC格式存入数据库并读取以本地时区格式读取的功能（这行最主要）
     config.active_record.time_zone_aware_attributes = false 
+* 设计模式，新增机器人api调用方法的情况。
+
+# TODO
+* 测试没有完全弄明白。
+* 发送邮件。
+* I18N细化。
 
 # 命令
 * 运行命令：rails s -p 3000 -e production
 * 测试命令：rails test -b test/models/article_test.rb
-* 数据库迁移命令：rake db:load或者rake db:schema:load
+* 数据库迁移命令：rake db:schema:load
 
 # I18N国际化
 只是使用了它的一点点语言转化功能，没有使用太明白，为什么notice显示出来的行数有很多，对某些串没有转化成功。

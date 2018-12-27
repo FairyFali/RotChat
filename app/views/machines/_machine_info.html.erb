@@ -1,28 +1,60 @@
-<div>机器人信息：</div>
-<div>machine name:</div>
-<div><%= @machine.name %></div>
-<div>machine api:</div>
-<div><%= @machine.api_key %></div>
-<div>用户评分：</div>
-<div><%= @machine.score/10.0 %></div>
-<div>平均响应时间：</div>
-<div><%= @machine.duration/1000 %> ms</div>
-<div>用户使用次数：</div>
-<div><%= @machine.req_num %></div>
-<div id="end_chat">结束聊天？请您评价：</div>
-<div>
-	<%= form_for :machine, url: '/machines/score', method: 'post' do |f| %>
-		<input type="hidden" name="id" value="<%= @machine.id %>" >
-		<%= f.text_field :score, value: nil, placeholder: '请您打分，1~10分' %>
-		<button>提交</button>
-	<% end %><!-- 
-	<form action="/machines/score" method="post">
-		<input type="hidden" name="id" value="<%= @machine.id %>" >
-		<input type="text" name="score" placeholder="请您打分，1~10分">
-		<button>提交</button>
-	</form> -->
+
+<div class="a clearfix" style="padding：10px ">
+  <div class="panel panel-default" style="height:467px"  >
+    <div class="panel-heading">
+      <i class="fa fa-comments fa-fw"></i> 机器人信息：
+    </div>
+
+    <div class="panel-body">
+      <table class="table">
+        <tbody class="color:red">
+          <tr >
+            <td width="40%">机器人名称:</td>
+            <td ><%= @machine.name %></td>
+          </tr>
+
+          <tr>
+            <td >用户评分：</td>
+            <td><%= @machine.score/10.0 %></td>
+          </tr>
+
+          <tr>
+            <td >响应用时：</td>
+            <td><%= @machine.duration/1000 %> ms</td>
+          </tr>
+
+          <tr>
+            <td >使用次数：</td>
+            <td><%= @machine.req_num %></td>
+          </tr>
+          <tr>
+            <td ></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="end_chat"><h5>结束聊天？请您评价：</h5></div>
+      <div>
+        <%= form_for :machine, url: '/machines/score', method: 'post' do |f| %>
+	        <input type="hidden" name="id" value="<%= @machine.id %>" >
+	        <%= f.text_field :score, value: nil, placeholder: '请您打分，1~10分' %>
+	        <button >提交</button>
+  		<% end %>
 </div>
-<%= link_to "更多>>", "/machines_profiles/"+@machine.id.to_s %>
+</br>
+<div class="col-lg-12">
+  <ul class="nav navbar-nav navbar-right">
+    <div class="" style="color: #25C6FC;">
+      <%= link_to "更多>>", "/machines_profiles/"+@machine.id.to_s, style: "color:#25C6FC;text-decoration:underline;" %>
+    </div>
+  </ul>
+</div>
+
+
+</div>
+</div>
+</div>
 <script type="text/javascript">
-	//eval("$('#end_chat').html('a<br>b<br>')");
+  //eval("$('#end_chat').html('a<br>b<br>')");
 </script>

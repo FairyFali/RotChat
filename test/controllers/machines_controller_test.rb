@@ -1,9 +1,17 @@
 # MachinesController的测试
 class MachinesControllerTest < ActionDispatch::IntegrationTest
+
+  def setup
+    @user = User.find(1)
+  end
+
   # 测试machine的主页，未登陆状态下返回302
   test "should get index" do
+    get new_user_session_path
+    post user_session_path(params: {user: {email: @user.email, password: 'wfl15846066427'}})
     get machines_url
-    assert_response 302
+    # assert_response 200
+    assert_redirected_to "/users/sign_in"
   end
 
   test "show machines list" do
