@@ -27,5 +27,7 @@ module RotChat
   # 关闭以UTC格式存入数据库并读取以本地时区格式读取的功能
   config.active_record.time_zone_aware_attributes = false 
 
+  config.assets.paths << Rails.root.join("app", "assets", "fonts")
+  
   end
 end

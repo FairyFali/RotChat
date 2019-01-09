@@ -105,6 +105,8 @@ GEM
     execjs (2.7.0)
     ffi (1.9.25)
     flamegraph (0.9.5)
+    font-awesome-rails (4.7.0.4)
+      railties (>= 3.2, < 6.0)
     get_process_mem (0.2.3)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -285,6 +287,7 @@ DEPENDENCIES
   derailed_benchmarks
   devise
   flamegraph
+  font-awesome-rails
   hirb
   jbuilder (~> 2.5)
   jquery-rails

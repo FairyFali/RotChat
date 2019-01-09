@@ -91,5 +91,8 @@ gem 'derailed_benchmarks'
 # 学习
 gem 'hirb'
 
+# 星星评分
+gem "font-awesome-rails"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

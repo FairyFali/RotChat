@@ -9,11 +9,13 @@
         <h4 class="modal-title">查找机器人</h4>
       </div>
       <div class="modal-body">
-        <form class="form-incline" id="search-machine">
+        <form class="" id="search-machine">
           <div class="input-group">
             <%= text_field_tag :query, params[:query], placeholder: "搜索机器人", class: 'form-control' %>
             <span class="input-group-btn">
-                <button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                <button class="btn btn-info">
+                  <i class="glyphicon glyphicon-search" style=""></i> Search
+                </button>
             </span>
           </div>
         </form>
