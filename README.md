@@ -2,7 +2,7 @@
 聊天机器人的实现，调用了图灵机器人等三个接口
 # 主页
 
-![主页](/Users/wangfali/workspace/rubys/RotChat/img/访问主页.png)
+![主页](img/访问主页.png)
 
 # 版本选择
 * 数据库：SQLite3
@@ -51,7 +51,7 @@
 # 测试覆盖率检测·
 使用gem包simplecov，rake test后在项目目录下生成coverage目录文件，内部为测试覆盖率的报告。
 
-![覆盖率报告](/Users/wangfali/workspace/rubys/RotChat/img/覆盖率.png)
+![覆盖率报告](img/覆盖率.png)
 
 # 使用分布式开发
 自己的思考：使用HTTP调用的方式实现分布式开发，在机器人的内部增加一个blog_id字段，在blog系统增加一个机器人博客，相当于在blog博客系统创建一篇博客，用户可以在blog系统博客下留言，Rot系统可以接收评论并展示。
