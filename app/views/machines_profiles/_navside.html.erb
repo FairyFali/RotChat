@@ -1,5 +1,3 @@
-<div>通讯录</div>
-
 <% @user_machines.each do |m| %>
 	<%= link_to machine_path(m), class: 'list-group-item' do %>
         <% if !@machine.nil? && @machine.id == m.id %>
